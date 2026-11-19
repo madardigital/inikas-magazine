@@ -185,13 +185,13 @@ h2.sec{font:700 clamp(1.6rem,4vw,2.3rem) var(--hf);margin:34px 0 14px;display:fl
 @media(max-width:539px){.team{grid-template-columns:minmax(0,1fr);gap:12px}.team li{min-height:90px;padding:18px}}
 @media(prefers-reduced-motion:reduce){.team li{transition:none}.team li:hover{transform:none}}
 
-/* Navigation remains available in desktop mode, including a 980px mobile desktop viewport. */
+/* Desktop header: logo, section links and tools share one RTL row. */
 @media(min-width:900px){
- .top{position:sticky;top:0;z-index:40;display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:10px 20px;background:var(--bg);box-shadow:0 6px 18px -16px var(--ink)}
- .top .brand{grid-column:1;grid-row:1;justify-self:start}
- .top .tools{grid-column:2;grid-row:1;margin-inline-start:0}
- .top #nav{display:flex;grid-column:1/-1;grid-row:2;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px;width:100%;padding-block:7px 2px;border-top:1px solid var(--line)}
- .top #nav a{font-size:.92rem;padding:7px 12px;white-space:nowrap}
+ .top{position:sticky;top:0;z-index:40;display:flex;flex-flow:row nowrap;align-items:center;gap:12px;padding:10px 20px;background:var(--bg);box-shadow:0 6px 18px -16px var(--ink)}
+ .top .brand{flex:0 0 auto}
+ .top .tools{flex:0 0 auto;margin-inline-start:auto}
+ .top #nav{display:flex;flex:1 1 auto;min-width:0;width:auto;margin-inline:0;justify-content:flex-start;align-items:center;flex-wrap:nowrap;gap:0;padding-block:0;border-top:0}
+ .top #nav a{font-size:clamp(.84rem,1.1vw,.92rem);padding:7px clamp(4px,.55vw,9px);white-space:nowrap}
  .top .burger{display:none}
 }
 .team{list-style:none;counter-reset:none}
