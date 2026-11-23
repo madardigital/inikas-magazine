@@ -22,7 +22,7 @@ var tv=$('.tview'),tt;tv.addEventListener('touchstart',function(){clearTimeout(t
 $('#btnTheme').onclick=function(){var t=DE.dataset.theme==='dark'?'light':'dark';DE.dataset.theme=t;try{localStorage.setItem('inikas-theme',t)}catch(e){}};
 // drawer
 var dr=document.createElement('div');dr.id='drawer';dr.className='drawer';
-dr.innerHTML='<div class="dback" data-x></div><aside class="dpanel" role="dialog" aria-modal="true" aria-label="قائمة المجلة"><div class="dh"><img src="'+IM+'logo-inikas.png" alt="انعكاس"><button class="ib" id="dclose" aria-label="إغلاق القائمة">✕</button></div><nav>'+NAVH+'</nav></aside>';
+dr.innerHTML='<div class="dback" data-x></div><aside class="dpanel" role="dialog" aria-modal="true" aria-label="قائمة المجلة"><div class="dh"><span class="logo-composite" role="img" aria-label="شعار انعكاس: ما خلف المرآة"><img src="'+IM+'logo-inikas.png" alt=""></span><button class="ib" id="dclose" aria-label="إغلاق القائمة">✕</button></div><nav>'+NAVH+'</nav></aside>';
 document.body.appendChild(dr);
 var bm=$('#btnMenu');
 function dopen(o){dr.classList.toggle('open',o);bm.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';if(o)$('#dclose').focus();else bm.focus()}
@@ -52,7 +52,7 @@ function side(a,cl){return'<a class="c '+(cl||'side')+'" href="'+href(a)+'"><div
 function card(a){return side(a,'side plain')}
 function home(){
  var c=A[0];
- main.innerHTML='<section class="hero"><div class="htx"><img class="logo" src="'+IM+'logo-inikas.png" alt="انعكاس: ما خلف المرآة"><h1>ليست الصورة <span class="grad">كل الحكاية</span></h1><p class="lead">خلف كل ملامح إنسان وتجربة وسياق وسؤال. نقرأ ما لا تُظهره المرآة.</p><a class="btn" href="'+href(c)+'">ابدأ القراءة</a></div><div class="mirror"><img fetchpriority="high" src="'+IM+'cover.jpg" alt="تصميم لامرأة أمام مرآة"></div></section>'
+ main.innerHTML='<section class="hero"><div class="htx"><span class="logo-composite logo" role="img" aria-label="انعكاس: ما خلف المرآة"><img src="'+IM+'logo-inikas.png" alt=""></span><h1>ليست الصورة <span class="grad">كل الحكاية</span></h1><p class="lead">خلف كل ملامح إنسان وتجربة وسياق وسؤال. نقرأ ما لا تُظهره المرآة.</p><a class="btn" href="'+href(c)+'">ابدأ القراءة</a></div><div class="mirror"><img fetchpriority="high" src="'+IM+'cover.jpg" alt="تصميم لامرأة أمام مرآة"></div></section>'
  +'<section class="intro reveal" aria-label="تعريف بالمجلة">'+INTRO.map(function(i){return'<div><h2>'+i[0]+'</h2><p>'+i[1]+'</p></div>'}).join('')+'</section>'
  +'<div class="wrap"><h2 class="sec reveal">مختارات انعكاس</h2><div class="slider reveal" aria-roledescription="معرض" aria-label="مختارات انعكاس"><div class="strack" id="st" tabindex="0">'
  +A.map(function(a,i){return'<article class="slide" aria-label="'+(i+1)+' من '+A.length+'"><img '+(i?'loading="lazy" ':'')+'src="'+IM+a.img+'" alt="'+a.alt+'" style="object-position:'+a.pos+'"><div class="txt"><div class="k glass">'+a.kind+'</div><h3>'+a.title+'</h3><a class="btn" href="'+href(a)+'">اقرأ المادة</a></div></article>'}).join('')
